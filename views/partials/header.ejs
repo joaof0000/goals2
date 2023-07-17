@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mongoose Salon</title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
-
-  
-  <nav>
-
-    <% if (user) { %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mongoose Goal</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <nav>
+      <% if (user) { %>
       <a href="/">Home</a>
-       &nbsp;|&nbsp;
-      <a href="/salons/new">New Appointment</a>
       &nbsp;|&nbsp;
-      <a href="/salons/appointments">All Appointments</a>
+      <a href="/goals/new">New Appointment</a>
+      &nbsp;|&nbsp;
+      <a href="/goals/appointments">All Appointments</a>
       &nbsp;|&nbsp;
       <a href="/logout">Log Out</a>
       <% } else { %>
-        <a href="/auth/google" class="login">Log In&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+      <a href="/auth/google" class="login"
+        >Log In&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"
+      /></a>
       <% } %>
-
-  </nav>
+    </nav>
+  </body>
+</html>

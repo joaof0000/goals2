@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+
+<h1 class="text-align-center">Enter New Appointment</h1>
+<form action="/goals" method="POST" class="text-align-center">
+  <div class="margin-top-10">
+    <label>Name: <input type="text" name="Name" class="margin-top" /></label>
+  </div>
+  <div class="margin-top-10">
+    <label
+      >Date:
+      <input
+        type="datetime-local"
+        id="Appointment-time"
+        name="meeting-time"
+        value="2023-07-12T19:30"
+        min="2023-0-07T00:00"
+        max="2024-06-14T00:00"
+      />
+    </label>
+  </div>
+  <div class="margin-top-10">
+    <label
+      >AppointmentType:
+      <select name="AppointmentType">
+        <option value="Haircut">Haircut</option>
+        <option value="Hair-Color">Hair-Color</option>
+        <option value="Hair-Extentions">Hair-Extentions</option>
+        <option value="Hair-Straightening">Hair-Straightening</option>
+        <option value="Hair-Permimg">Hair-Permimg</option>
+        <option value="Styling">Styling</option>
+      </select>
+    </label>
+  </div>
+  <div class="margin-top-10">
+    <label
+      >Correct Information:
+      <input type="checkbox" name="CorrectInformation" checked />
+    </label>
+  </div>
+  <div class="margin-top-10">
+    <input type="submit" value="Add Appointment" />
+  </div>
+  <div class="margin-top-10">
+    <p><%= errorMsg %></p>
+  </div>
+  <%- include('../partials/footer') %>
+</form>

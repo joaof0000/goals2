@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+
+<h1 class="text-align-center">Appointment List</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Appointment Type</th>
+      <th>Correct Information</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Write the line of EJS to iterate over goal using forEach -->
+    <% goals.forEach(function(s) { %>
+    <tr>
+      <td><%= s.Name %></td>
+      <td><%= s.Date %></td>
+      <td><%= s.AppointmentType %></td>
+      <td><%= s.CorrectInformation %></td>
+      <td><a href="/goals/<%= s._id %>">DETAILS</a></td>
+      <!-- <td><%= s.CorrectInformation ? 'Yes' : 'Nope' %></td>  -->
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<%- include('../partials/footer') %>

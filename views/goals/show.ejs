@@ -1,10 +1,10 @@
 <%- include('../partials/header') %>
 
   <section id="show-page">
-    <div class="margin-top-10">Name: <%= salon.Name %></div>
-    <div class="margin-top-10">Date: <%= salon.Date %></div>
-    <div class="margin-top-10">Appointment Type: <%= salon.AppointmentType %></div>
-    <div class="margin-top-10">Correct Information: <%= salon.CorrectInformation ? 'Yes' : 'Nope' %></div>
+    <div class="margin-top-10">Name: <%= goal.Name %></div>
+    <div class="margin-top-10">Date: <%= goal.Date %></div>
+    <div class="margin-top-10">Appointment Type: <%= goal.AppointmentType %></div>
+    <div class="margin-top-10">Correct Information: <%= goal.CorrectInformation ? 'Yes' : 'Nope' %></div>
   </section> 
 
   <!-- Reviews show page -->
@@ -13,7 +13,7 @@
   </div>
 
   <% if (user) { %>
-    <form id="add-review-form" method="POST" action="/salons/<%= salon._id %>/reviews" class="text-align-center">
+    <form id="add-review-form" method="POST" action="/goals/<%= goal._id %>/reviews" class="text-align-center">
       <div class="div-display margin-top-10">
         <label>Review:</label>
         <textarea name="Content" class="text-area-height"></textarea>
@@ -38,7 +38,7 @@
   </form>
 
    <!-- // Create a list of reviews  -->
-   <% if (salon.reviews.length) { %>
+   <% if (goal.reviews.length) { %>
     <table>
       <thead>
         <tr>
@@ -49,7 +49,7 @@
         </tr>
       </thead>
       <tbody>
-        <% salon.reviews.forEach(function(r) { %>
+        <% goal.reviews.forEach(function(r) { %>
           <tr>
             <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer" ><%= r.userName %></td>
             <td><%= r.createdAt.toLocaleDateString() %></td>
