@@ -1,8 +1,8 @@
 # Hair Goal Appoinments
 
-Objective of this application is to book hair appointments so it's easier for customers and workers.
+Objective of this application is to book hair newgoals so it's easier for customers and workers.
 
-# preview
+# pupdate
 
 # Home Page
 
@@ -15,11 +15,12 @@ Objective of this application is to book hair appointments so it's easier for cu
 # Getting Started
 
 This Project is build using JavaScript, EJS,Express, Node, MongoDb, Mongoose and CSS. It allows the user to create a hair appoinments. User can see all the
-appointment details. User can also leave a review and rating for the goal as well as edit the reviews.
+newgoal details. User can also leave a update and Rating for the goal as well as edit the updates.
 This web application is very easy to use and efficient.
 
 # Next Steps:
 
 - Add logo for goal
 - Implement the customer's contact number
-- Users can update the appointment date and time if needed
+- Users can update the newgoal date and time if needed
+# goals2
