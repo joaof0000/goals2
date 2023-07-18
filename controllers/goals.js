@@ -2,10 +2,10 @@ const GoalModel = require("../models/goal");
 
 module.exports = {
   show,
-  new: newAppointment,
+  new: newNewgoal,
   create,
   home,
-  appointments,
+  newgoals,
 };
 
 async function home(req, res) {
@@ -19,11 +19,11 @@ async function home(req, res) {
   }
 }
 
-async function appointments(req, res) {
+async function newgoals(req, res) {
   try {
     const goals = await GoalModel.find({});
-    console.log("Appointment got called");
-    res.render("goals/appointments", { title: "All goals", goals: goals });
+    console.log("Newgoal got called");
+    res.render("goals/newgoals", { title: "All goals", goals: goals });
   } catch (err) {
     console.log(err);
     res.render(err);
@@ -33,11 +33,11 @@ async function appointments(req, res) {
 async function show(req, res) {
   const goal = await GoalModel.findById(req.params.id);
 
-  res.render("goals/show", { title: "Appointment Details", goal });
+  res.render("goals/show", { title: "Goal List Details", goal });
 }
 
-function newAppointment(req, res) {
-  res.render("goals/new", { title: "Add Appointment", errorMsg: "" });
+function newNewgoal(req, res) {
+  res.render("goals/new", { title: "Add New Goal", errorMsg: "" });
 }
 
 async function create(req, res) {

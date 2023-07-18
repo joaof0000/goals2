@@ -1,24 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//One goal has many reviews
-//A review belogs to a goal
-//is the relationship for the the reviews and goal
-
-//write the many (side) review Schema in the one side (in this case goal)
-
-const reviewSchema = new Schema(
+const updateSchema = new Schema(
   {
     Content: {
       type: String,
       required: true,
     },
-    Rating: {
-      type: Number,
-      min: 1,
-      max: 5,
-      default: 5,
-    },
+    
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
@@ -32,7 +21,7 @@ const reviewSchema = new Schema(
   }
 );
 
-//one Appointment
+//one Newgoal
 // SCHEMA Defines what structure/shape
 // that the documents created from the Goal Model
 // that our stored in the database should look like
@@ -48,23 +37,16 @@ const goalSchema = new mongoose.Schema(
       default: () =>
         new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
     },
-    AppointmentType: {
+    Category: {
       type: String,
-      enum: [
-        "Haircut",
-        "Hair-Color",
-        "Hair-Extentions",
-        "Hair-Straightening",
-        "Hair-Permimg",
-        "Styling",
-      ],
+      enum: ["Financial", "Spiritual", "Physical", "Family", "Lover", "Career"],
       required: true,
     },
     CorrectInformation: {
       type: Boolean,
       default: true,
     },
-    reviews: [reviewSchema],
+    updates: [updateSchema],
   },
   {
     timestamps: true,

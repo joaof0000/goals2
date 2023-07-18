@@ -3,25 +3,25 @@ const GoalModel = require("../models/goal");
 
 module.exports = {
   create,
-  delete: deleteReview,
-  update: updateReview,
+  delete: deleteUpdate,
+  update: updateUpdate,
 };
 
-async function updateReview(req, res) {
+async function updateUpdate(req, res) {
   try {
-    //Find the appointment with review
+    //Find the newgoal with update
     const goalDoc = await GoalModel.findOne({
-      "reviews._id": req.params.id,
-      "reviews.user": req.user._id,
+      "updates._id": req.params.id,
+      "updates.user": req.user._id,
     });
 
-    //Find the review subdoc using the id method on mongoose arrays
-    const reviewSubdoc = goalDoc.reviews.id(req.params.id);
-    console.log("reviewSubdoc......: ", reviewSubdoc);
+    //Find the update subdoc using the id method on mongoose arrays
+    const updateSubdoc = goalDoc.updates.id(req.params.id);
+    console.log("updateSubdoc......: ", updateSubdoc);
     console.log("req.body.Content......: ", req.body.Content);
 
-    //update the text of the review
-    reviewSubdoc.Content = req.body.Content;
+    //update the text of the update
+    updateSubdoc.Content = req.body.Content;
 
     //save the updated book
     goalDoc.save();
@@ -34,21 +34,21 @@ async function updateReview(req, res) {
   }
 }
 
-async function deleteReview(req, res, next) {
+async function deleteUpdate(req, res, next) {
   try {
-    //Find the appointment with the review
+    //Find the newgoal with the update
     const goalDoc = await GoalModel.findOne({
-      "reviews._id": req.params.id,
-      "reviews.user": req.user._id,
+      "updates._id": req.params.id,
+      "updates.user": req.user._id,
     });
 
     //A user that is not logged in
     if (!goalDoc) return res.redirect("/goals");
 
-    //Remove the review from the goal goal.review array
-    //remove takes the id of the review
-    goalDoc.reviews.remove(req.params.id);
-    //Muted the goalDoc reviews array so we need to tell mongodb to update the database
+    //Remove the update from the goal goal.update array
+    //remove takes the id of the update
+    goalDoc.updates.remove(req.params.id);
+    //Muted the goalDoc updates array so we need to tell mongodb to update the database
     await goalDoc.save();
 
     //tells the client to make a request to this route
@@ -68,7 +68,7 @@ async function create(req, res) {
     req.body.userName = req.user.Name;
     req.body.userAvatar = req.user.avatar;
 
-    goalFromTheDatabase.reviews.push(req.body);
+    goalFromTheDatabase.updates.push(req.body);
     // since I changed a document (goalFromTheDb) (I mutated it)
     // I have to tell mongodb that, so we have to save
     await goalFromTheDatabase.save();

@@ -3,55 +3,41 @@
   <section id="show-page">
     <div class="margin-top-10">Name: <%= goal.Name %></div>
     <div class="margin-top-10">Date: <%= goal.Date %></div>
-    <div class="margin-top-10">Appointment Type: <%= goal.AppointmentType %></div>
-    <div class="margin-top-10">Correct Information: <%= goal.CorrectInformation ? 'Yes' : 'Nope' %></div>
+    <div class="margin-top-10">Category Type: <%= goal.Category %></div>
+    <div class="margin-top-10">How Many Days: <%= goal.HowManyDays %></div>
   </section> 
 
-  <!-- Reviews show page -->
-  <div class="text-align-center">
-    <h2>Reviews</h2>
-  </div>
-
   <% if (user) { %>
-    <form id="add-review-form" method="POST" action="/goals/<%= goal._id %>/reviews" class="text-align-center">
+    <form id="add-update-form" method="POST" action="/goals/<%= goal._id %>/updates" class="text-align-center">
       <div class="div-display margin-top-10">
-        <label>Review:</label>
+        <label>Update Goals:</label>
         <textarea name="Content" class="text-area-height"></textarea>
       </div>
       <div class="margin-top-10">
-        <label>Rating:</label>
-        <select name="Rating">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5" selected>5</option>
-        </select>
-      </div>
-      <div class="margin-top-10">
-        <input type="submit" value="Add Review">
+        <input type="submit" value="Add Update">
       </div>
     </form>
     <% } else { %>
-      <p>Please Login to leave a review</p>
+      <p>Please Login to leave a update</p>
     <% } %>
   </form>
 
-   <!-- // Create a list of reviews  -->
-   <% if (goal.reviews.length) { %>
+   <!-- // Create a list of updates  -->
+   <% if (goal.updates.length) { %>
     <table>
       <thead>
         <tr>
           <th>User</th>
           <th>Date</th>
-          <th>Review</th>
-          <th>Rating</th>
+          <th>Update</th>
+          <th>Delete</th>
+      
         </tr>
       </thead>
       <tbody>
-        <% goal.reviews.forEach(function(r) { %>
+        <% goal.updates.forEach(function(r) { %>
           <tr>
-            <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer" ><%= r.userName %></td>
+            <td class="update-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer" ><%= r.userName %></td>
             <td><%= r.createdAt.toLocaleDateString() %></td>
             <!-- <td>
               <%= r.createdAt.toLocaleDateString() %>
@@ -59,22 +45,20 @@
             <td>
               <%= r.Content %>
             </td>
-            <td>
-              <%= r.Rating %>
-            </td>
+          
             <td>
               <% if (user && user._id.equals(r.user)) { %>
-                <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                <form action="/updates/<%= r._id %>?_method=DELETE" method="POST">
                   <button type="submit">X</button>
                 </form>
                 
               <% } %>
             </td>
             <td>
-              <form action="/reviews/<%= r._id %>?_method=PUT" method="POST">
+              <form action="/updates/<%= r._id %>?_method=PUT" method="POST">
                 <!-- Value attribute is being set to the comment's current text -->
                 <input name="Content" value="<%= r.Content %>">
-                <button type="submit">Edit Review</button>
+                <button type="submit">Edit Update</button>
               </form>
             </td>
           </tr>
@@ -82,7 +66,7 @@
       </tbody>
     </table>
     <% } else { %>
-      <h5 class="text-align-center ">No Reviews Yet</h5>
+      <h5 class="text-align-center ">No updates Yet</h5>
       <% } %>
   
 

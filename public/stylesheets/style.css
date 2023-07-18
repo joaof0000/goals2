@@ -1,22 +1,88 @@
-* {
-  font-family: Helvetica;
-  color: #096f1c;
+:root {
+  --primary-color: #3f51b5;
+  --secondary-color: #84148c;
+  --background-color: #98c6e9;
+  --nav-background-color: #bf8de1;
+  --nav-link-color: #096f1c;
+  --nav-link-hover-color: white;
+  --nav-link-hover-bg-color: #0c752f;
+  --form-font-size: 20px;
+  --list-link-bg-color: #bb75fb;
+  --list-link-hover-bg-color: white;
+  --winter-color-1: #98c6e9;   /* Light Blue */
+  --winter-color-2: #144e8c;   /* Dark Blue */
+  --winter-color-3: #ffffff;   /* White */
+  --winter-color-4: #6db0ce;   /* Light Blue 2 */
+}
+
+/* Button dancing animation */
+@keyframes dance {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px) rotate(-5deg);
+  }
+  50% {
+    transform: translateX(10px) rotate(5deg);
+  }
+  75% {
+    transform: translateX(-10px) rotate(-5deg);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Apply the animation to all buttons */
+button {
+  animation: dance 2s infinite;
+}
+
+/* Winter-themed CSS */
+.banner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.banner {
+  height: 200px;
+  width: 100%;
+  background-color: var(--winter-color-1);
+  margin-bottom: 50px;
+}
+
+h1.text-align-center {
+  font-size: 2.5em;
+  color: var(--winter-color-2);
+  margin-bottom: 10px;
+}
+
+h2.text-align-center {
+  font-size: 1.5em;
+  color: var(--winter-color-2);
+  line-height: 1.5;
+  margin: 20px auto;
+  width: 80%;
 }
 
 body {
   margin: 0;
   display: grid;
   grid-template-rows: 50px 1fr;
-  background-color: rgb(244, 249, 171);
-  grid-template-areas: 
+  background-color: var(--background-color);
+  grid-template-areas:
     "nav"
-    "main"
-  
+    "main";
 }
 
 body > nav {
   grid-area: nav;
-  background-color: #b4f3ae;
+  background-color: var(--nav-background-color);
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -24,15 +90,15 @@ body > nav {
 }
 
 nav > a {
-  margin: 20px;
-  text-decoration: wavy;
+  margin: 170px;
+  text-decoration: underline;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 nav > a:hover {
-  color: white;
-  background-color: #0c752f;
+  color: var(--nav-link-hover-color);
+  background-color: var(--nav-link-hover-bg-color);
 }
 
 nav > a.active {
@@ -41,13 +107,13 @@ nav > a.active {
 
 #new-form {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 20px;
   grid-template-columns: repeat(2, minmax(auto, 22rem));
 }
 
 #new-form *,
-#add-review-form * {
-  font-size: 20px;
+#add-update-form * {
+  font-size: var(--form-font-size);
 }
 
 #new-form input[type="submit"] {
@@ -57,12 +123,12 @@ nav > a.active {
 }
 
 table {
-  font-size: 20px;
+  font-size: var(--form-font-size);
 }
 
 table thead th {
   padding: 5px;
-  border-bottom: 2px solid #096f1c;
+  border-bottom: 2px solid var(--nav-link-color);
 }
 
 table td {
@@ -70,61 +136,61 @@ table td {
   text-align: center;
 }
 
-#list td:nth-child(2), #list td:nth-child(3){
+#list td:nth-child(2),
+#list td:nth-child(3) {
   min-width: 100px;
 }
 
 #list a {
   border-radius: 4px;
-  background-color: #bb75fb;
+  background-color: var(--list-link-bg-color);
   padding: 4px;
   text-decoration: none;
   font-size: 14px;
 }
 
 #list a:hover {
-  background-color: white;
+  background-color: var(--list-link-hover-bg-color);
 }
 
 #show-page {
   text-align: center;
   display: grid;
-  
 }
 
 #show-page div:nth-child(even) {
   font-weight: bold;
 }
 
-#add-review-form {
-  display: block;
+#add-update-form {
+  display: grid;
   grid-template-columns: auto auto;
   grid-gap: 1rem;
   margin-bottom: 2rem;
 }
 
-#add-review-form input[type="submit"] {
+#add-update-form input[type="submit"] {
   width: 10rem;
   grid-column: 2 / 3;
 }
 
 .login {
   display: flex;
-  justify-content: right;
-  align-items: right;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .login img {
   height: 20px;
 }
 
-.review-user {
+.update-user {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.review-user img {
+.update-user img {
   border-radius: 50%;
   height: 40px;
 }
@@ -144,4 +210,3 @@ table td {
 .div-display {
   display: flow-root;
 }
-
